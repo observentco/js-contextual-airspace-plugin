@@ -1,55 +1,60 @@
 {
-  "name": "airmap-contextual-airspace-plugin",
-  "version": "1.3.1",
-  "description": "Mapbox GL JS plugin to view and interact with AirMap's Contextual Airspace Rules",
-  "main": "dist/index.js",
-  "repository": "airmap/js-contextual-airspace-plugin",
-  "scripts": {
-    "clean": "rm -rf dist",
-    "init": "mkdir dist",
-    "prebuild": "npm run clean && npm run init",
-    "build": "babel --out-dir dist src --copy-files && npm run build:compile && npm run build:minify",
-    "build:compile": "browserify src/index.js -s AirMap.ContextualAirspacePlugin > dist/airmap.contextual-airspace-plugin.js -t [ babelify --plugins [ 'add-module-exports' ] ]",
-    "build:minify": "uglifyjs dist/airmap.contextual-airspace-plugin.js -m -c > dist/airmap.contextual-airspace-plugin.min.js",
-    "docs": "jsdoc2md src/index.js > API.md",
-    "release": "npm install && npm test && npm run build && sh ./scripts/prepare.sh && sh ./scripts/deploy.sh",
-    "release:next": "npm install && npm test && npm run build && sh ./scripts/deploy-next.sh",
-    "start": "webpack-dev-server --mode development --hot --open",
-    "test": "export NODE_ENV=development NODE_PATH=./ && jest && rm test-report.xml",
-    "test:circle": "export NODE_ENV=development NODE_PATH=./ && TEST_REPORT_PATH=$CIRCLE_TEST_REPORTS/jest TEST_REPORT_FILENAME=unit.xml jest --runInBand"
-  },
-  "keywords": [
-    "airmap",
-    "airspace",
-    "drones",
-    "maps",
-    "uav"
-  ],
-  "author": "AirMap, Inc. <developers@airmap.com> (https://airmap.com)",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "lodash": "^4.17.10",
-    "moment": "^2.22.1"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-1": "^6.24.1",
-    "babelify": "^8.0.0",
-    "browserify": "^16.2.2",
-    "jest": "^22.4.3",
-    "jest-junit-reporter": "^1.1.0",
-    "jsdoc-to-markdown": "^4.0.1",
-    "standard-version": "^4.3.0",
-    "uglify-js": "^3.3.25",
-    "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.3",
-    "webpack-dev-server": "^3.1.4"
-  }
+	"name": "airmap-contextual-airspace-plugin",
+	"version": "1.3.1",
+	"description": "Mapbox GL JS plugin to view and interact with AirMap's Contextual Airspace Rules",
+	"main": "dist/index.js",
+	"repository": "airmap/js-contextual-airspace-plugin",
+	"files": [
+		"dist/",
+		"API.md"
+	],
+	"scripts": {
+		"clean": "rm -rf dist",
+		"init": "mkdir dist",
+		"prebuild": "npm run clean && npm run init",
+		"prepack": "npm run build",
+		"build": "babel --out-dir dist src --copy-files && npm run build:compile && npm run build:minify",
+		"build:compile": "browserify src/index.js -s AirMap.ContextualAirspacePlugin > dist/airmap.contextual-airspace-plugin.js -t [ babelify --plugins [ 'add-module-exports' ] ]",
+		"build:minify": "uglifyjs dist/airmap.contextual-airspace-plugin.js -m -c > dist/airmap.contextual-airspace-plugin.min.js",
+		"docs": "jsdoc2md src/index.js > API.md",
+		"release": "npm install && npm test && npm run build && sh ./scripts/prepare.sh && sh ./scripts/deploy.sh",
+		"release:next": "npm install && npm test && npm run build && sh ./scripts/deploy-next.sh",
+		"start": "webpack-dev-server --mode development --hot --open",
+		"test": "export NODE_ENV=development NODE_PATH=./ && jest && rm test-report.xml",
+		"test:circle": "export NODE_ENV=development NODE_PATH=./ && TEST_REPORT_PATH=$CIRCLE_TEST_REPORTS/jest TEST_REPORT_FILENAME=unit.xml jest --runInBand"
+	},
+	"keywords": [
+		"airmap",
+		"airspace",
+		"drones",
+		"maps",
+		"uav"
+	],
+	"author": "AirMap, Inc. <developers@airmap.com> (https://airmap.com)",
+	"license": "Apache-2.0",
+	"dependencies": {
+		"axios": "^0.18.0",
+		"lodash": "^4.17.10",
+		"moment": "^2.22.1"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-loader": "^7.1.4",
+		"babel-plugin-add-module-exports": "^0.2.1",
+		"babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+		"babel-polyfill": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-stage-1": "^6.24.1",
+		"babelify": "^8.0.0",
+		"browserify": "^16.2.2",
+		"jest": "^22.4.3",
+		"jest-junit-reporter": "^1.1.0",
+		"jsdoc-to-markdown": "^4.0.1",
+		"standard-version": "^4.3.0",
+		"uglify-js": "^3.3.25",
+		"webpack": "^4.8.3",
+		"webpack-cli": "^2.1.3",
+		"webpack-dev-server": "^3.1.4"
+	}
 }
