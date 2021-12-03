@@ -13,7 +13,7 @@
 		"init": "mkdir dist",
 		"prebuild": "npm run clean && npm run init",
 		"prepack": "npm run build",
-		"postinstall": "npm run build",
+		"postinstall": "npm i && npm run build",
 		"build": "babel --out-dir dist src --copy-files && npm run build:compile && npm run build:minify",
 		"build:compile": "browserify src/index.js -s AirMap.ContextualAirspacePlugin > dist/airmap.contextual-airspace-plugin.js -t [ babelify --plugins [ 'add-module-exports' ] ]",
 		"build:minify": "uglifyjs dist/airmap.contextual-airspace-plugin.js -m -c > dist/airmap.contextual-airspace-plugin.min.js",
